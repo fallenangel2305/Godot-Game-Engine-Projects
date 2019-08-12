@@ -1,0 +1,264 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tiles/Glass/tileset.res" type="TileSet" id=2]
+[ext_resource path="res://Tiles/Decoration/tileset.res" type="TileSet" id=3]
+[ext_resource path="res://Graphics/PNG/Backgrounds/colored_grass.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/PNG/Items/flagBlue_down.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/PNG/Items/flagBlue1.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/PNG/Items/flagBlue2.png" type="Texture" id=7]
+[ext_resource path="res://Codes/CanvasLayer.gd" type="Script" id=8]
+[ext_resource path="res://Graphics/PNG/HUD/hudCoin.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/PNG/HUD/hud0.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/PNG/HUD/hud1.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/PNG/HUD/hud2.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/PNG/HUD/hud3.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/PNG/HUD/hud4.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/PNG/HUD/hud5.png" type="Texture" id=15]
+[ext_resource path="res://Graphics/PNG/HUD/hud6.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/PNG/HUD/hud7.png" type="Texture" id=17]
+[ext_resource path="res://Graphics/PNG/HUD/hud8.png" type="Texture" id=18]
+[ext_resource path="res://Graphics/PNG/HUD/hud9.png" type="Texture" id=19]
+[ext_resource path="res://Graphics/PNG/HUD/hudHeart_full.png" type="Texture" id=20]
+[ext_resource path="res://Graphics/PNG/HUD/hudHeart_half.png" type="Texture" id=21]
+[ext_resource path="res://Graphics/PNG/HUD/hudHeart_empty.png" type="Texture" id=22]
+[ext_resource path="res://Graphics/PNG/Tiles/switchBlue.png" type="Texture" id=23]
+[ext_resource path="res://Graphics/PNG/Tiles/switchBlue_pressed.png" type="Texture" id=24]
+[ext_resource path="res://Graphics/PNG/Tiles/doorClosed_top.png" type="Texture" id=25]
+[ext_resource path="res://Graphics/PNG/Tiles/doorOpen_top.png" type="Texture" id=26]
+[ext_resource path="res://Graphics/PNG/Tiles/doorClosed_mid.png" type="Texture" id=27]
+[ext_resource path="res://Graphics/PNG/Tiles/doorOpen_mid.png" type="Texture" id=28]
+[ext_resource path="res://Characters/EnemyBarnacle/Enemy_barnacle.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Characters/Enemy/Enemy.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Scenes/T-Box/BoxCoin/Box_coin.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Scenes/T-Box/Box.tscn" type="PackedScene" id=32]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 704, 160 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "flag",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 63.6428, 24.2603 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 60, 80 )
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 330, 140 )
+
+[node name="camera" type="Camera2D" parent="Player"]
+current = true
+
+[node name="TileMaps" type="Node2D" parent="."]
+
+[node name="Glass" type="TileMap" parent="TileMaps" groups=[
+"block",
+]]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 31, 0, 0, 32, 0, 0, 65564, 0, 0, 65565, 0, 0, 65566, 0, 0, 65567, 1, 0, 65568, 1, 0, 65569, 0, 0, 131099, 0, 0, 131100, 1, 0, 131101, 1, 0, 131102, 1, 0, 131103, 1, 0, 131104, 1, 0, 131105, 1, 0, 131106, 0, 0, 196635, 1, 0, 196636, 1, 0, 196637, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 196641, 1, 0, 196642, 1, 0, 196643, 0, 0, 262144, 3, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 262171, 0, 0, 262172, 0, 0, 262173, 0, 0, 262174, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 0, 0, 262178, 0, 0, 262179, 0, 0, 262180, 0, 0, 262181, 0, 0, 262182, 0, 0, 262183, 0, 0, 262184, 0, 0, 262196, 0, 0, 262197, 0, 0, 262198, 0, 0, 262199, 0, 0, 262200, 0, 0, 262203, 0, 0, 262204, 0, 0, 262205, 0, 0, 262206, 0, 0, 262207, 0, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 327699, 1, 0, 327700, 1, 0, 327701, 1, 0, 327702, 1, 0, 327703, 1, 0, 327704, 1, 0, 327705, 1, 0, 327706, 1, 0, 327707, 1, 0, 327708, 1, 0, 327709, 1, 0, 327710, 1, 0, 327711, 1, 0, 327712, 1, 0, 327713, 1, 0, 327714, 1, 0, 327715, 1, 0, 327716, 1, 0, 327717, 1, 0, 327718, 1, 0, 327719, 1, 0, 327720, 1, 0, 327732, 1, 0, 327733, 1, 0, 327734, 1, 0, 327735, 1, 0, 327736, 1, 0, 327737, 1, 0, 327738, 1, 0, 327739, 1, 0, 327740, 1, 0, 327741, 1, 0, 327742, 1, 0, 327743, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 1, 0, 393244, 1, 0, 393245, 1, 0, 393246, 1, 0, 393247, 1, 0, 393248, 1, 0, 393249, 1, 0, 393250, 1, 0, 393251, 1, 0, 393252, 1, 0, 393253, 1, 0, 393254, 1, 0, 393255, 1, 0, 393256, 1, 0, 393268, 1, 0, 393269, 1, 0, 393270, 1, 0, 393271, 1, 0, 393272, 1, 0, 393273, 1, 0, 393274, 1, 0, 393275, 1, 0, 393276, 1, 0, 393277, 1, 0, 393278, 1, 0, 393279, 1, 0, 458788, 1, 0, 458789, 1, 0, 458790, 1, 0, 458791, 1, 0, 458792, 1, 0, 458793, 1, 0, 458794, 1, 0, 458795, 1, 0, 458796, 1, 0, 458797, 1, 0, 458798, 1, 0, 458799, 1, 0, 458800, 1, 0, 458801, 1, 0, 458802, 1, 0, 458803, 1, 0, 458804, 1, 0, 458805, 1, 0, 458806, 1, 0, 458807, 1, 0, 458808, 1, 0, 458809, 1, 0, 458810, 1, 0, 458811, 1, 0, 458812, 1, 0, 458813, 1, 0, 458814, 1, 0, 458815, 1, 0, 524324, 1, 0, 524325, 1, 0, 524326, 1, 0, 524327, 1, 0, 524328, 1, 0, 524329, 1, 0, 524330, 1, 0, 524331, 1, 0, 524332, 1, 0, 524333, 1, 0, 524334, 1, 0, 524335, 1, 0, 524336, 1, 0, 524337, 1, 0, 524338, 1, 0, 524339, 1, 0, 524340, 1, 0, 524341, 1, 0, 524342, 1, 0, 524343, 1, 0, 524344, 1, 0, 524345, 1, 0, 524346, 1, 0, 524347, 1, 0, 524348, 1, 0, 524349, 1, 0, 524350, 1, 0, 524351, 1, 0 )
+
+[node name="Decoration" type="TileMap" parent="TileMaps"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196617, 0, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196624, 3, 0, 196625, 0, 0, 196628, 1, 0, 196629, 1, 0, 196630, 2, 0, 196631, 1, 0, 196633, 3, 0, 196635, 0, 0, 196636, 0, 0, 196639, 3, 0, 196641, 0, 0, 196642, 0, 0, 196643, 0, 0, 196646, 3, 0, 196661, 0, 0, 196662, 1, 0, 196663, 1, 0, 196664, 2, 0, 196667, 2, 0, 196668, 3, 0, 196669, 0, 0, 196670, 0, 0, 196671, 3, 0, 262185, 5, 0, 262186, 5, 0, 262187, 5, 0, 262188, 5, 0, 262189, 5, 0, 262190, 5, 0, 262191, 5, 0, 262192, 5, 0, 262193, 5, 0, 262194, 5, 0, 262195, 5, 0, 327721, 4, 0, 327722, 4, 0, 327723, 4, 0, 327724, 4, 0, 327725, 4, 0, 327726, 4, 0, 327727, 4, 0, 327728, 4, 0, 327729, 4, 0, 327730, 4, 0, 327731, 4, 0, 393257, 4, 0, 393258, 4, 0, 393259, 4, 0, 393260, 4, 0, 393261, 4, 0, 393262, 4, 0, 393263, 4, 0, 393264, 4, 0, 393265, 4, 0, 393266, 4, 0, 393267, 4, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="bg" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1020.15, 213.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="swim_zone" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="1" type="CollisionShape2D" parent="swim_zone"]
+position = Vector2( 5952, 704 )
+shape = SubResource( 1 )
+
+[node name="Flag" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 4192, -64 )
+
+[node name="spr" type="AnimatedSprite" parent="Flag"]
+frames = SubResource( 2 )
+playing = true
+
+[node name="col" type="CollisionShape2D" parent="Flag"]
+position = Vector2( -49.5, -14.5 )
+scale = Vector2( 0.738806, 1.21642 )
+shape = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+script = ExtResource( 8 )
+
+[node name="hud_coins" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 64, 64 )
+texture = ExtResource( 9 )
+
+[node name="0" type="AnimatedSprite" parent="CanvasLayer/hud_coins"]
+position = Vector2( 96, 0 )
+frames = SubResource( 4 )
+
+[node name="1" type="AnimatedSprite" parent="CanvasLayer/hud_coins"]
+visible = false
+position = Vector2( 160, 0 )
+frames = SubResource( 5 )
+
+[node name="hud_lives" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 1120, 64 )
+frames = SubResource( 6 )
+
+[node name="hud_lives2" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 1248, 64 )
+frames = SubResource( 6 )
+
+[node name="Switch" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 6570, 830 )
+
+[node name="spr" type="AnimatedSprite" parent="Switch"]
+frames = SubResource( 7 )
+
+[node name="col" type="CollisionShape2D" parent="Switch"]
+position = Vector2( 3.3241, 19.9446 )
+shape = SubResource( 8 )
+
+[node name="Door" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 7970, 450 )
+
+[node name="spr" type="AnimatedSprite" parent="Door"]
+position = Vector2( 0, -120 )
+frames = SubResource( 9 )
+
+[node name="spr1" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 10 )
+
+[node name="col" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, -30 )
+shape = SubResource( 11 )
+
+[node name="Ememy_container" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Enemy_barnacle" parent="Ememy_container" instance=ExtResource( 29 )]
+position = Vector2( 7328, 576 )
+
+[node name="Enemy_barnacle2" parent="Ememy_container" instance=ExtResource( 29 )]
+position = Vector2( 7424, 576 )
+
+[node name="Enemy_barnacle3" parent="Ememy_container" instance=ExtResource( 29 )]
+position = Vector2( 7520, 576 )
+
+[node name="Enemy" parent="Ememy_container" instance=ExtResource( 30 )]
+position = Vector2( 1152, 448 )
+
+[node name="Boxes" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Box_coin" parent="Boxes" instance=ExtResource( 31 )]
+position = Vector2( 896, 256 )
+
+[node name="Box_coin2" parent="Boxes" instance=ExtResource( 31 )]
+position = Vector2( 3392, 256 )
+
+[node name="Box" parent="Boxes" instance=ExtResource( 32 )]
+position = Vector2( 800, 256 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 32 )]
+position = Vector2( 992, 256 )
+[connection signal="body_entered" from="swim_zone" to="Player" method="_on_swim_zone_body_entered"]
+[connection signal="body_exited" from="swim_zone" to="Player" method="_on_swim_zone_body_exited"]
+[connection signal="body_entered" from="Flag" to="Player" method="_on_Flag_body_entered"]
+[connection signal="body_entered" from="Switch" to="Player" method="_on_Switch_body_entered"]
+[connection signal="body_entered" from="Door" to="Player" method="_on_Door_body_entered"]
+[connection signal="body_exited" from="Door" to="Player" method="_on_Door_body_exited"]
+[connection signal="body_entered" from="Ememy_container/Enemy_barnacle" to="Player" method="_on_Enemy_barnacle_body_entered"]
+[connection signal="body_entered" from="Ememy_container/Enemy_barnacle2" to="Player" method="_on_Enemy_barnacle_body_entered"]
+[connection signal="body_entered" from="Ememy_container/Enemy_barnacle3" to="Player" method="_on_Enemy_barnacle_body_entered"]

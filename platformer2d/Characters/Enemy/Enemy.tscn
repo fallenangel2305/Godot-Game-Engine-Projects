@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Characters/Enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/PNG/Enemies/slimePurple.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/PNG/Enemies/slimePurple_hit.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/PNG/Enemies/slimePurple_move.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 10 )
+
+[node name="Enemy" type="KinematicBody2D" index="0" groups=[
+"enemy",
+]]
+
+position = Vector2( 573.874, 438.727 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+speed = 150
+jump_speed = 100
+gravity = 200
+
+[node name="spr" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "move"
+
+[node name="col" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.390168, 40.3416 )
+scale = Vector2( 1.53908, 2.37432 )
+shape = SubResource( 2 )
+
+[node name="time_jump" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+

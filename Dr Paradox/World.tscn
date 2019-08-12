@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Player/Jump0.png" type="Texture" id=2]
+[ext_resource path="res://Player/Run0.png" type="Texture" id=3]
+[ext_resource path="res://Player/Run1.png" type="Texture" id=4]
+[ext_resource path="res://Player/Run2.png" type="Texture" id=5]
+[ext_resource path="res://Player/Run3.png" type="Texture" id=6]
+[ext_resource path="res://Player/Run4.png" type="Texture" id=7]
+[ext_resource path="res://Player/Run7.png" type="Texture" id=8]
+[ext_resource path="res://Player/Idle0.png" type="Texture" id=9]
+[ext_resource path="res://Player/Jump3.png" type="Texture" id=10]
+[ext_resource path="res://jungleDirtTileSet.tres" type="TileSet" id=11]
+[ext_resource path="res://DPbg.png" type="Texture" id=12]
+[ext_resource path="res://hills.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 14.8039
+height = 27.3387
+
+[node name="World" type="Node2D"]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 151.64, 186.469 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 0.273911, 0.865726 )
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="Camera2D" type="Camera2D" parent="Player/Sprite"]
+visible = false
+position = Vector2( 3.05176e-005, 5.01054 )
+current = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2( 0.168915, 3.83355 )
+shape = SubResource( 2 )
+
+[node name="Node" type="Node" parent="Player"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65538, 0, 0, 65539, 2, 0, 131074, 3, 0, 131075, 5, 0, 196610, 3, 0, 196611, 5, 0, 262146, 3, 0, 262147, 5, 0, 327682, 3, 0, 327683, 5, 0, 327692, 0, 0, 327693, 2, 0, 327697, 9, 0, 327698, 10, 0, 327699, 10, 0, 327700, 11, 0, 393218, 3, 0, 393219, 5, 0, 393228, 3, 0, 393229, 5, 0, 393233, 3, 0, 393234, 4, 0, 393235, 4, 0, 393236, 5, 0, 458754, 3, 0, 458755, 4, 0, 458756, 10, 0, 458757, 10, 0, 458758, 10, 0, 458759, 10, 0, 458760, 10, 0, 458761, 10, 0, 458762, 10, 0, 458763, 10, 0, 458764, 4, 0, 458765, 4, 0, 458766, 11, 0, 458769, 3, 0, 458770, 4, 0, 458771, 4, 0, 458772, 5, 0, 458776, 9, 0, 458777, 10, 0, 458778, 10, 0, 458779, 10, 0, 458780, 10, 0, 458781, 10, 0, 458782, 11, 0, 458791, 9, 0, 458792, 10, 0, 458793, 10, 0, 458794, 10, 0, 458795, 10, 0, 458796, 10, 0, 458797, 10, 0, 458798, 11, 0, 524290, 3, 0, 524291, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 5, 0, 524305, 3, 0, 524306, 4, 0, 524307, 4, 0, 524308, 5, 0, 524312, 3, 0, 524313, 4, 0, 524314, 4, 0, 524315, 4, 0, 524316, 4, 0, 524317, 4, 0, 524318, 4, 0, 524319, 10, 0, 524320, 10, 0, 524321, 10, 0, 524322, 10, 0, 524323, 10, 0, 524324, 10, 0, 524325, 10, 0, 524326, 10, 0, 524327, 4, 0, 524328, 4, 0, 524329, 4, 0, 524330, 4, 0, 524331, 4, 0, 524332, 4, 0, 524333, 4, 0, 524334, 5, 0, 589826, 6, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 7, 0, 589833, 7, 0, 589834, 7, 0, 589835, 7, 0, 589836, 7, 0, 589837, 7, 0, 589838, 8, 0, 589841, 3, 0, 589842, 4, 0, 589843, 4, 0, 589844, 5, 0, 589848, 3, 0, 589849, 4, 0, 589850, 4, 0, 589851, 4, 0, 589852, 4, 0, 589853, 4, 0, 589854, 4, 0, 589855, 4, 0, 589856, 4, 0, 589857, 4, 0, 589858, 4, 0, 589859, 4, 0, 589860, 4, 0, 589861, 4, 0, 589862, 4, 0, 589863, 4, 0, 589864, 4, 0, 589865, 4, 0, 589866, 4, 0, 589867, 4, 0, 589868, 4, 0, 589869, 4, 0, 589870, 5, 0, 655377, 3, 0, 655378, 4, 0, 655379, 4, 0, 655380, 5, 0, 655384, 3, 0, 655385, 4, 0, 655386, 4, 0, 655387, 4, 0, 655388, 4, 0, 655389, 4, 0, 655390, 4, 0, 655391, 4, 0, 655392, 4, 0, 655393, 4, 0, 655394, 4, 0, 655395, 4, 0, 655396, 4, 0, 655397, 4, 0, 655398, 4, 0, 655399, 4, 0, 655400, 4, 0, 655401, 4, 0, 655402, 4, 0, 655403, 4, 0, 655404, 4, 0, 655405, 4, 0, 655406, 5, 0, 720920, 6, 0, 720921, 7, 0, 720922, 7, 0, 720923, 7, 0, 720924, 7, 0, 720925, 7, 0, 720926, 7, 0, 720927, 7, 0, 720928, 7, 0, 720929, 7, 0, 720930, 7, 0, 720931, 7, 0, 720932, 7, 0, 720933, 7, 0, 720934, 7, 0, 720935, 7, 0, 720936, 7, 0, 720937, 7, 0, 720938, 7, 0, 720939, 7, 0, 720940, 7, 0, 720941, 7, 0, 720942, 8, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 2400, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+position = Vector2( -1295.41, -314.285 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="Hills" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Hills"]
+modulate = Color( 0.0941176, 0.776471, 0.00784314, 1 )
+position = Vector2( 257.035, 191.633 )
+scale = Vector2( 1.05533, 1 )
+texture = ExtResource( 13 )
